@@ -1,0 +1,286 @@
+$light-blue: #1469FF;
+$dark-blue: #0027C8;
+$magenta: #FF3C82;
+
+html, body {
+    overflow: hidden;
+}
+body {
+    font-family: 'Roboto', 'sans-serif'
+}
+@mixin circle($diameter, $bg) {
+    border-radius: 50%;
+    width: $diameter;
+    height: $diameter;
+    background-color: $bg;
+    transform-origin: 50% 50%;
+}
+@mixin square($side, $bg) {
+    width: $side;
+    height: $side;
+    background-color: $bg;
+    transform-origin: 50% 50%;
+}
+@mixin triangle($width, $height, $bg) {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 $width/2 $height $width/2;
+    border-color: transparent transparent $bg transparent;
+    transform-origin: 50% 50%;
+}
+@mixin center() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin fullscreen() {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.hidden {
+    display: none;
+}
+.title {
+    font-size: 64px;
+    color: #FFFFFF;
+    text-align: center;
+}
+.subtitle {
+    font-size: 24px;
+    color: #FFFFFF;
+    line-height: 36px;
+}
+.q-num {
+    font-size: 64px;
+    color: #FF3C82;
+}
+.question-text {
+    font-size: 36px;
+    color: #FFFFFF;
+    line-height: 48px;
+}
+.question-guide {
+    font-size: 24px;
+    color: #0027C8;
+    line-height: 36px;
+    margin-bottom: 40px;
+}
+.answer {
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 36px;
+    border: 2px solid #FFFFFF;
+    border-radius: 30.5px;
+    padding: 10px;
+    margin-bottom: 25px;
+    white-space: nowrap;
+    cursor: pointer;
+    &:hover,
+    &:active {
+        color: $light-blue;
+        background-color: #fff;
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes rotate-counter {
+    0% {
+        transform: rotateZ(360deg);
+    }
+    100% {
+        transform: rotateZ(0);
+    }
+}
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// screen1
+.home {
+    @include fullscreen();
+    background-color: $light-blue;
+    .text {
+        @include center();
+        text-align: center;
+        white-space: nowrap;
+        animation: home-text 1s ease-in 4s 1;
+    }
+    .star {
+        @include triangle(365px, 313px, $magenta);
+        @include center();
+        &::after {
+            position: absolute;
+            content: "";
+            @include triangle(365px, 313px, $magenta);
+            transform: rotate(180deg) translate(50%, -15%);
+        }
+        animation: home-star 5s ease-out;
+        animation-iteration-count: 1;
+    }
+    .circle {
+        @include circle(534px, $dark-blue);
+        @include center();
+        animation: home-circle 5s ease-out;
+        animation-iteration-count: 1;
+    }
+    .square {
+        @include square(450px, #000);
+        @include center();
+        animation: home-square 5s ease-out;
+        animation-iteration-count: 1;
+    }
+}
+@keyframes home-star {
+    0% {
+        transform: translate(-50%,-50%) rotateZ(0deg);
+    }
+    62% {
+        transform: translate(-50%,-50%) rotateZ(360deg);
+    }
+    74% {
+        transform: translate(-50%,-50%) rotateZ(360deg) scale(1);
+    }
+    86% {
+        transform: translate(-50%,-50%) rotateZ(360deg) scale(7);
+    }
+    95% {
+        transform: translate(-50%,-50%) rotateZ(360deg) scale(7);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%,-50%) rotateZ(360deg) scale(7);
+        opacity: 0;
+    }
+}
+@keyframes home-circle {
+    0% {
+        transform: translate(-50%,-50%) scale(1);
+    }
+    20% {
+        transform: translate(-50%,-50%) scale(1.1);
+    }
+    50% {
+        transform: translate(-50%,-50%) scale(.9);
+    }
+    62% {
+        transform: translate(-50%,-50%) scale(1);
+    }
+    74% {
+        transform: translate(-50%,-50%) scale(7);
+    }
+    100% {
+        transform: translate(-50%,-50%) scale(7);
+    }
+}
+@keyframes home-square {
+    0% {
+        transform: translate(-50%,-50%) rotateZ(360deg);
+    }
+    50% {
+        transform: translate(-50%,-50%) rotateZ(0deg);
+    }
+    62% {
+        transform: translate(-50%,-50%) rotateZ(0deg) scale(7);
+    }
+    100% {
+        transform: translate(-50%,-50%) rotateZ(0deg) scale(7);
+    }
+}
+@keyframes home-text {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+// question1
+.question1 {
+    @include fullscreen();
+    background-color: $light-blue;
+    .main {
+        padding: 80px 45vw 80px 12vw;
+        animation: fadein .6s ease-in;
+        z-index: 1;
+    }
+    .sidebar {
+        background-color: $dark-blue;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 40vw;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: transform .7s;
+        z-index: 10;
+        &.is-out {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    .square {
+        @include square(179px, $magenta);
+        position: absolute;
+        top: 80px;
+        left: 80px;
+        transition: top 1s;
+        animation: rotate 5s linear 3s infinite;
+    }
+    .triangle {
+        @include triangle(147px, 127px, #fff);
+        position: absolute;
+        top: 40vh;
+        right: -15px;
+        transition: top 1s;
+        animation: rotate-counter 5s linear 3s infinite;
+    }
+    .circle {
+         @include circle(402px, #000);
+         position: absolute;
+         top: 70vh;
+         right: -30px;
+         transition: top 1s;
+    }
+    .hide-child {
+        .square,
+        .triangle,
+        .circle {
+            top: 100vh;
+        }
+    }
+}
+
+// @keyframes q1-square {
+//     0% {
+//         transform: translate(-50%,-50%) rotateZ(360deg);
+//     }
+//     100% {
+
+//     }
+// }
+// @keyframes q1-square {
+//     0% {
+//         transform: translate(-50%,-50%) rotateZ(360deg);
+//     }
+//     100% {
+
+//     }
+// }
