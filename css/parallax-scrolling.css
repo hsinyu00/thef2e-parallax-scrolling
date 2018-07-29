@@ -10,11 +10,11 @@ body { font-family: 'Roboto', 'sans-serif'; }
 
 .q-num { font-size: 64px; color: #FF3C82; }
 
-.question-text { font-size: 36px; color: #FFFFFF; line-height: 48px; }
+.question-text { font-size: 36px; color: #FFFFFF; line-height: 48px; margin-bottom: 10px; }
 
-.question-guide { font-size: 24px; color: #0027C8; line-height: 36px; margin-bottom: 40px; }
+.question-guide { font-size: 24px; color: #0027C8; line-height: 36px; margin-bottom: 20px; }
 
-.answer { font-size: 20px; color: #FFFFFF; text-align: center; line-height: 36px; border: 2px solid #FFFFFF; border-radius: 30.5px; padding: 10px; margin-bottom: 25px; white-space: nowrap; cursor: pointer; }
+.answer { font-size: 20px; color: #FFFFFF; text-align: center; line-height: 36px; border: 2px solid #FFFFFF; border-radius: 30.5px; padding: 10px; margin-bottom: 15px; white-space: nowrap; cursor: pointer; }
 
 .answer:hover, .answer:active { color: #1469FF; background-color: #fff; }
 
@@ -100,13 +100,15 @@ body { font-family: 'Roboto', 'sans-serif'; }
 
 .question1 .main { padding: 80px 45vw 80px 12vw; -webkit-animation: fadein .6s ease-in; animation: fadein .6s ease-in; z-index: 1; }
 
-.question1 .sidebar { background-color: #0027C8; position: absolute; right: 0; top: 0; height: 100vh; width: 40vw; opacity: 0; -webkit-transform: translateX(100%); transform: translateX(100%); -webkit-transition: -webkit-transform .7s; transition: -webkit-transform .7s; transition: transform .7s; transition: transform .7s, -webkit-transform .7s; z-index: 10; }
+.question1 .sidebar { background-color: #0027C8; position: absolute; right: 0; top: 0; height: 100vh; width: 40vw; opacity: 0; -webkit-transform: translateX(100%); transform: translateX(100%); -webkit-transition: all .7s; transition: all .7s; z-index: 10; }
 
 .question1 .sidebar.is-out { -webkit-transform: translateX(0); transform: translateX(0); opacity: 1; }
 
-.question1 .square { width: 179px; height: 179px; background-color: #FF3C82; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; position: absolute; top: 80px; left: 80px; -webkit-transition: top 1s; transition: top 1s; -webkit-animation: rotate 5s linear 3s infinite; animation: rotate 5s linear 3s infinite; }
+.question1 .sidebar.is-full { width: 100vw; }
 
-.question1 .triangle { width: 0; height: 0; border-style: solid; border-width: 0 73.5px 127px 73.5px; border-color: transparent transparent #fff transparent; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; position: absolute; top: 40vh; right: -15px; -webkit-transition: top 1s; transition: top 1s; -webkit-animation: rotate-counter 5s linear 3s infinite; animation: rotate-counter 5s linear 3s infinite; }
+.question1 .square { width: 179px; height: 179px; background-color: #FF3C82; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; position: absolute; top: 80px; left: 80px; -webkit-transition: top 1s; transition: top 1s; -webkit-animation: rotate 5s linear 4s infinite; animation: rotate 5s linear 4s infinite; }
+
+.question1 .triangle { width: 0; height: 0; border-style: solid; border-width: 0 73.5px 127px 73.5px; border-color: transparent transparent #fff transparent; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; position: absolute; top: 40vh; right: -15px; -webkit-transition: top 1s; transition: top 1s; -webkit-animation: rotate-counter 5s linear 4s infinite; animation: rotate-counter 5s linear 4s infinite; }
 
 .question1 .circle { border-radius: 50%; width: 402px; height: 402px; background-color: #000; -webkit-transform-origin: 50% 50%; transform-origin: 50% 50%; position: absolute; top: 70vh; right: -30px; -webkit-transition: top 1s; transition: top 1s; }
 

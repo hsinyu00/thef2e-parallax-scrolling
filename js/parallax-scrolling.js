@@ -1,4 +1,4 @@
-(function(){
+$(function(){
     var homeTimer,
         sb1Timer,
         sb1ChildTimer,
@@ -8,8 +8,8 @@
 
     // home
     homeTimer = setTimeout(function(){
-        $('.home').hide();
-        $('.question1').show();
+        $('.home').addClass('hidden');
+        $('.question1').removeClass('hidden');
     }, 5000);
 
     // question1
@@ -19,7 +19,13 @@
     sb1ChildTimer = setTimeout(function () {
         $('.question1 .sidebar').removeClass('hide-child');
     }, 8000);
-    $('.q1 .answer').click(function() {
-        $('.question1').hide();
-      });
-})();
+    $('.question1 .answer').click(function(){
+        $('.question1 .sidebar').addClass('hide-child');
+        setTimeout(function() {
+          $('.question1 .sidebar').addClass('is-full');
+        }, 700);
+        setTimeout(function () {
+            $('.question1').addClass('hidden');
+        }, 2000);
+    })
+});
